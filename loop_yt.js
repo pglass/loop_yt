@@ -180,7 +180,7 @@
     }
 
     /* A bug prevents this from working with a callback on state changes
-     * in firefox. Instead, just reload the current video within its frame.
+     * in firefox. Instead, use setInterval.
      *
      * Relevant issue:
      *     https://code.google.com/p/gdata-issues/issues/detail?id=6531
@@ -195,9 +195,9 @@
             return;
         }
 
-        /* Check each second if the video has ended. If so, reload it.
-         * If this script is called again, the global id is used to clear
-         * the interval beforehand.
+        /* Check each second if we should seek to either the beginning
+         * or the specified start time. The global variable _loop_yt_interval_id
+         * is used to ensure only one interval is set at a time.
          */
         _loop_yt_interval_id = setInterval(function() {
             var state = yp.getPlayerState();
