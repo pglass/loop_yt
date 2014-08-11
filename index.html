@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>LoopYT by pglass</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>LoopYT</h1>
+        <p>A redirectless bookmarklet for looping YouTube videos</p>
+
+        <p class="view"><a href="https://github.com/pglass/loop_yt">View the Project on GitHub <small>pglass/loop_yt</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/pglass/loop_yt/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/pglass/loop_yt/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/pglass/loop_yt">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>This is a redirectless bookmarklet for looping YouTube videos. This should work for both the Flash and HTML5 versions of YouTube.</p>
+
+<p><strong>How to use it</strong>: Drag the bookmarklet to your bookmarks. When you're on a YouTube video page, click the bookmarklet. The video should then repeat indefinitely. If the video is stopped, the script will play the video.</p>
+
+<p><strong>Why</strong>: Other bookmarklets that I've found for looping a YouTube video will send you to another website like <a href="http://youtubeonrepeat.com/">youtubeonrepeat.com</a>. This bookmarklet avoids this redirect. At the time of this writing, there is also a bug that causes these websites to hang on the first repeat (possibly <a href="https://code.google.com/p/gdata-issues/issues/detail?id=6531">this bug</a>?) on Flash videos. This script has a workaround for looping Flash videos on YouTube.</p>
+
+<p><strong>How it works</strong>: Part of the script finds the video element in the page, and decides whether it's an HTML5 or Flash video. HTML5 videos have built-in support for looping: just enable the <code>loop</code> flag. Flash videos are looped using <code>setInterval</code> and the <a href="https://developers.google.com/youtube/iframe_api_reference">YouTube IFrame API</a> to check each second if the video has ended. When a Flash video has ended, the video is reloaded within the iframe through the YouTube API.</p>
+
+<p><strong>But does it really work?</strong> I tested briefly with both Flash and HTML5 videos in Firefox (version 31.0). It supports HTML5 videos work in Chrome (version 37.0.2062.68). I couldn't figure out how to test Flash videos, since YouTube didn't let me play any videos with Flash. No idea if it works on any other browsers.</p>
+
+<p><strong>Problems/Todo</strong></p>
+
+<ul>
+<li>It doesn't toggle looping off. After you click the bookmarklet to loop a video, you should pause the video if you want it to stop playing.</li>
+<li>There is no indication that you've actually clicked the bookmark. Luckily the script is idempotent. You can click it as many times as you want to make sure the video loops.</li>
+<li>I have no idea how this interacts with YouTube playlists.</li>
+<li>It doesn't work for embedded YouTube videos. Doing this is a matter of finding the video in the page. </li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/pglass">pglass</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
