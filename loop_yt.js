@@ -134,13 +134,6 @@
         get_stop_time_input().oninput = get_stop_time(video_duration);
     }
 
-    function create_toolbox() {
-        var watch_header_div = document.getElementById('watch-header');
-        var loop_yt_div = create_element_from_html_string(toolbox_html);
-        watch_header_div.insertBefore(loop_yt_div, watch_header_div.firstChild);
-        return loop_yt_div;
-    }
-
     function video_id_from_url(url) {
         if (typeof url !== typeof "") {
             return null;
@@ -229,9 +222,9 @@
 
     function setup_toolbox() {
         if (document.getElementById('loop-yt-div') === null) {
-            var watch_header = document.getElementById('watch-header');
+            var info = document.getElementById('info');
             var loop_yt_div = create_element_from_html_string(toolbox_html);
-            watch_header.insertBefore(loop_yt_div, watch_header.firstChild);
+            info.insertBefore(loop_yt_div, info.firstChild);
         }
     }
 
